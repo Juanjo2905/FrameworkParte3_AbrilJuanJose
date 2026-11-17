@@ -17,18 +17,26 @@ export class StudentListPage implements OnInit {
   isLoading = signal<boolean>(true);
   errorMessage = signal<string>('');
   selectedStudent = signal<Student | null>(null);
+  showOnlyFavorites = signal<boolean>(false);
 
   searchQuery = signal<string>('');
   favoriteIds = signal<number[]>([]);
 
   filteredStudents = computed(() => {
     const term = this.searchQuery().toLowerCase().trim();
-    if (!term) return this.students();
+    const onlyFavs = this.showOnlyFavorites();
+    const favIds = this.favoriteIds();
 
-    return this.students().filter(student =>
-      student.name.toLowerCase().includes(term)
-    );
+    return this.students().filter(student =>{
+      const matchesName = !term || student.name.toLowerCase().includes(term);
+      const matchesFavorite = !onlyFavs || favIds.includes(student.id);
+      return matchesName && matchesFavorite;
+    });
   });
+
+  toggleFavoritesFilter(): void {
+    this.showOnlyFavorites.update(current => !current);
+  }
 
   favoritesCount = computed(() => this.favoriteIds().length);
 
@@ -59,4 +67,6 @@ export class StudentListPage implements OnInit {
         : [...ids, student.id]
     );
   }
+
+  
 }

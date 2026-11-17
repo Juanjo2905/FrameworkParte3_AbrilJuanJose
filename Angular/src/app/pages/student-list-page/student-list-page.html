@@ -1,6 +1,14 @@
 <section>
   <div class="header-bar">
     <h2>Lista de Estudiantes</h2>
+    <button
+      type="button"
+      class="favorites-btn"
+      [class.active]="showOnlyFavorites()"
+      (click)="toggleFavoritesFilter()"
+    >
+      {{ showOnlyFavorites() ? '★ Mostrando favoritos' : '☆ Favoritos' }} ({{ favoritesCount() }})
+    </button>
     <span class="favorites-badge">Favoritos: {{ favoritesCount() }}</span>
   </div>
 
@@ -33,7 +41,9 @@
           (toggleFavorite)="handleToggleFavorite($event)"
         />
       } @empty {
-        <p class="empty-message">No se encontraron estudiantes con ese nombre.</p>
+        <p class="empty-message">{{ showOnlyFavorites() 
+            ? 'No tienes estudiantes favoritos con ese criterio.' 
+            : 'No se encontraron estudiantes con ese nombre.' }}</p>
       }
     </div>
   }
