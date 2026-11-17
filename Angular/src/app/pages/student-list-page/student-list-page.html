@@ -1,0 +1,40 @@
+<section>
+  <div class="header-bar">
+    <h2>Lista de Estudiantes</h2>
+    <span class="favorites-badge">Favoritos: {{ favoritesCount() }}</span>
+  </div>
+
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Buscar estudiante por nombre..."
+      [value]="searchQuery()"
+      (input)="onSearch($event)"
+    />
+  </div>
+
+  @if (selectedStudent()) {
+    <div class="selected-banner">
+      Estudiante seleccionado: <strong>{{ selectedStudent()!.name }}</strong> ({{ selectedStudent()!.phone }})
+    </div>
+  }
+
+  @if (isLoading()) {
+    <p class="loading">Cargando...</p>
+  } @else if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  } @else {
+    <div class="student-list">
+      @for (student of filteredStudents(); track student.id) {
+        <app-student-card
+          [student]="student"
+          [isFavorite]="favoriteIds().includes(student.id)"
+          (selectStudent)="handleStudentSelect($event)"
+          (toggleFavorite)="handleToggleFavorite($event)"
+        />
+      } @empty {
+        <p class="empty-message">No se encontraron estudiantes con ese nombre.</p>
+      }
+    </div>
+  }
+</section>

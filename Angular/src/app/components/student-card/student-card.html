@@ -1,0 +1,20 @@
+<article class="card" (click)="onSelect()">
+  <div class="card-info">
+    <h3>{{ student().name }}</h3>
+    <p>{{ student().email }}</p>
+    <span class="city">Ciudad: {{ student().address.city }}</span>
+  </div>
+
+  <div class="card-actions">
+    <button 
+      type="button" 
+      class="btn-fav" 
+      [class.active]="isFavorite()"
+      (click)="onToggleFavorite($event)"
+    >
+      {{ isFavorite() ? '★ Favorito' : '☆ Favorito' }}
+    </button>
+
+    <button type="button" class="btn-select">Seleccionar</button>
+  </div>
+</article>
