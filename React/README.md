@@ -1,16 +1,40 @@
-# React + Vite
+# Gestor de Estudiantes — Comparativa Angular vs. React
+## Programado por: Juan José Abril
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para la consulta, búsqueda por nombre, visualización de detalles y filtrado de favoritos de estudiantes consumiendo la API pública de JSONPlaceholder (`/users`), implementada utilizando el framework **React**.
 
-Currently, two official plugins are available:
+### Comandos de ejecución y pruebas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Entrar a la carpeta del proyecto React e instalar las dependencias:
+   ```bash
+   cd React
+   npm install
+   ```
 
-## React Compiler
+2. Levantar el servidor de desarrollo con Vite :
+   ```bash
+   npm run dev
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Ejecutar las pruebas unitarias con Vitest:
+   ```bash
+   npx vitest run
+   ```
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Evidencias
+
+# Interfaz de la aplicación
+
+![Funcionamiento de la aplicación](./imagenes/EvidenciaFuncionamiento.png)
+
+# Funcionamiento de la barra de busqueda
+
+![Funcionamiento de la barra de busqueda](./imagenes/EvidenciaFuncionamiento2.png)
+
+# Prueba realizada
+![Prueba realizada](./imagenes/EvidenciaPruebas.png)
+
+# Funcionalidad adcional (Filtro para favoritos)
+![Funcionalidad adcional (Filtro para favoritos)](./imagenes/EvidenciaFuncionalidadAdicional.png)
